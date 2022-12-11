@@ -15,8 +15,9 @@ def display(x, y, title, ylabel='None'):
     plt.show()
 
 
-def silhouette(K, silhouette):
-    K.append(len(silhouette))
+def silhouette_analysis(K, silhouette):
+    K.append(len(silhouette)+1)
+    print(K)
     ylabel = 'silhouette score'
     title = 'silhouette'
     display(K, silhouette, title, ylabel)
@@ -55,10 +56,10 @@ def main():
         labels = k_means.labels_
 
         silhouette.append(silhouette_score(pca, labels)
-                          )  # 計算輪廓係數，可以發現K=3，為最高分
+                          )  # 計算輪廓係數，可以發現K=4，為最高分
 
         plt.show()
-        silhouette(K, silhouette)
+        silhouette_analysis(K, silhouette)
 
 
 main()
